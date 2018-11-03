@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ASP_Helpdesk.Department>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="animated fadeIn">
+    
+    <br />
+    <a align="right" class="btn btn-primary fa fa-plus" href="@Url.Action("Create","Departments")"> Tambah Data</a> 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                
+                <div class="card-header">
+                    <strong class="card-title">Data Departments</strong>
+                                       
+                </div>                    
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nama Departments</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning fa fa-pencil" href="@Url.Action("Edit","Departments", new { id = item.Id })"> Edit</a> |
+                                        <a class="btn btn-danger fa fa-minus-circle" href="@Url.Action("Delete","Departments", new { id = item.Id })"> Delete</a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ASP_Helpdesk.SubCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="animated fadeIn">
+    <a class="btn btn-primary" href="@Url.Action("Create","SubCategories")">Tambah Data</a>
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Data Details Category</strong>
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sub Category</th>
+                                <th>Nama Category</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category.Name)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning" href="@Url.Action("Edit","SubCategories", new { id = item.Id })">Edit</a> |
+                                        <a class="btn btn-danger" href="@Url.Action("Delete","SubCategories", new { id = item.Id })">Delete</a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        }
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

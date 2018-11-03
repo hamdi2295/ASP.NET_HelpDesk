@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HelpDeskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Regencies_Id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="DueDates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="Interval" Type="int" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Provinces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+  </EntityType>
+  <EntityType Name="Regencies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Provinces_Id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="SubCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Categories_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Technician" Type="nvarchar(max)" />
+    <Property Name="AdminBy" Type="nvarchar(max)" />
+    <Property Name="DueDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="OnProgressDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="OnWaitingDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="OnHoldingDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="ResolvedDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="Status" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="DueDates_Id" Type="int" />
+    <Property Name="SubCategories_Id" Type="int" />
+    <Property Name="users_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="Gender" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="int" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="PostNumber" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+    <Property Name="IsDelete" Type="bit" Nullable="false" />
+    <Property Name="Departments_Id" Type="int" />
+    <Property Name="Villages_Id" Type="bigint" />
+    <Property Name="Roles_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Villages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="CreateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="DeleteDate" Type="datetimeoffset" Precision="7" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="Districts_Id" Type="bigint" />
+  </EntityType>
+  <Association Name="FK_Districts_Regencies">
+    <End Role="Regencies" Type="Self.Regencies" Multiplicity="0..1" />
+    <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regencies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Districts">
+        <PropertyRef Name="Regencies_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Regencies_Provinces">
+    <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
+    <End Role="Regencies" Type="Self.Regencies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provinces">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Regencies">
+        <PropertyRef Name="Provinces_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategories_cagories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+    <End Role="SubCategories" Type="Self.SubCategories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SubCategories">
+        <PropertyRef Name="Categories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_DueDates">
+    <End Role="DueDates" Type="Self.DueDates" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DueDates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="DueDates_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Subcat">
+    <End Role="SubCategories" Type="Self.SubCategories" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="SubCategories_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Department">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Departments_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Roles_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Village">
+    <End Role="Villages" Type="Self.Villages" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Villages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="Villages_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Villages_District">
+    <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+    <End Role="Villages" Type="Self.Villages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Districts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Villages">
+        <PropertyRef Name="Districts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HelpDeskModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DueDates" EntityType="Self.DueDates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Regencies" EntityType="Self.Regencies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategories" EntityType="Self.SubCategories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Villages" EntityType="Self.Villages" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Districts_Regencies" Association="Self.FK_Districts_Regencies">
+      <End Role="Regencies" EntitySet="Regencies" />
+      <End Role="Districts" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Regencies_Provinces" Association="Self.FK_Regencies_Provinces">
+      <End Role="Provinces" EntitySet="Provinces" />
+      <End Role="Regencies" EntitySet="Regencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategories_cagories" Association="Self.FK_SubCategories_cagories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="SubCategories" EntitySet="SubCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_DueDates" Association="Self.FK_Tickets_DueDates">
+      <End Role="DueDates" EntitySet="DueDates" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Subcat" Association="Self.FK_Tickets_Subcat">
+      <End Role="SubCategories" EntitySet="SubCategories" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Users" Association="Self.FK_Tickets_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Department" Association="Self.FK_Users_Department">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Village" Association="Self.FK_Users_Village">
+      <End Role="Villages" EntitySet="Villages" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Villages_District" Association="Self.FK_Villages_District">
+      <End Role="Districts" EntitySet="Districts" />
+      <End Role="Villages" EntitySet="Villages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

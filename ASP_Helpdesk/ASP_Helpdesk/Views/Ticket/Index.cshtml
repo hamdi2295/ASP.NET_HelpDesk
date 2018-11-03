@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ASP_Helpdesk.Ticket>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="animated fadeIn">
+    <a align="right" class="btn btn-primary fa fa-plus" href="@Url.Action("Create","Ticket")"></i> Tambah Data</a>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-header">
+                    <strong class="card-title">Data Ticket</strong>
+
+                </div>
+                <div class="card-body">
+                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Client Name</th>
+                                <th>Technician Name</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var item in Model)
+                        {
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Technician)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-warning" href="@Url.Action("Edit","Ticket", new { id = item.Id })">Edit</a> |
+                                        <a class="btn btn-primary" href="@Url.Action("Details","Ticket", new { id = item.Id })">Details</a> |
+                                        <a class="btn btn-danger" href="@Url.Action("Delete","Ticket", new { id = item.Id })">Delete</a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

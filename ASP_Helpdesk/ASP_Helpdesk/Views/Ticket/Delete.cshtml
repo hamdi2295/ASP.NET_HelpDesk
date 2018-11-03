@@ -1,0 +1,78 @@
+﻿@model ASP_Helpdesk.Ticket
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <strong>Are you sure want to delete this?</strong>
+        </div>
+        <div class="card-body card-block">
+            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Client Name </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.User.FirstName)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Technician Name </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.Technician)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Status </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.Status)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Received Date </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.OnProgressDate)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Finish Date </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.DueDate)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Description </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.SubCategory.Category.Name)
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col col-md-3"><label for="text-input" class=" form-control-label">Subcategory Name </label></div>
+                    <div class="col-12 col-md-9">
+                        : @Html.DisplayFor(model => model.SubCategory.Name)
+                    </div>
+                </div>
+                
+
+            </form>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="card-footer">
+                <button type="submit" value="Delete" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i>Delete
+                </button>
+                <a href="@Url.Action("Index", "Ticket")" class="btn btn-primary btn-sm">
+                    <i class=""></i> Back
+                </a>
+            </div>
+        }
+    </div>
+</div>
